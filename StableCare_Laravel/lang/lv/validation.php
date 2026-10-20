@@ -1,0 +1,31 @@
+<?php
+
+return [
+    'accepted' => 'Lauks :attribute ir jāapstiprina.',
+    'after' => 'Laukam :attribute jābūt datumam pēc :date.',
+    'after_or_equal' => 'Laukam :attribute jābūt datumam, kas sakrīt ar :date vai ir pēc tā.',
+    'array' => 'Laukam :attribute jābūt sarakstam.',
+    'before_or_equal' => 'Laukam :attribute jābūt datumam, kas sakrīt ar :date vai ir pirms tā.',
+    'boolean' => 'Laukam :attribute jābūt jā/nē vērtībai.',
+    'confirmed' => 'Lauka :attribute apstiprinājums nesakrīt.',
+    'date' => 'Lauks :attribute nav derīgs datums.',
+    'date_format' => 'Laukam :attribute jāatbilst formātam :format.',
+    'email' => 'Laukam :attribute jābūt derīgai e-pasta adresei.',
+    'exists' => 'Izvēlētā :attribute vērtība nav derīga.',
+    'in' => 'Izvēlētā :attribute vērtība nav derīga.',
+    'integer' => 'Laukam :attribute jābūt veselam skaitlim.',
+    'max' => ['numeric' => 'Lauka :attribute vērtība nedrīkst pārsniegt :max.', 'file' => 'Faila :attribute izmērs nedrīkst pārsniegt :max kilobaitus.', 'string' => 'Lauks :attribute nedrīkst būt garāks par :max rakstzīmēm.', 'array' => 'Lauks :attribute nedrīkst saturēt vairāk par :max elementiem.'],
+    'min' => ['numeric' => 'Lauka :attribute vērtībai jābūt vismaz :min.', 'file' => 'Faila :attribute izmēram jābūt vismaz :min kilobaitiem.', 'string' => 'Laukā :attribute jābūt vismaz :min rakstzīmēm.', 'array' => 'Laukā :attribute jābūt vismaz :min elementiem.'],
+    'numeric' => 'Laukam :attribute jābūt skaitlim.',
+    'regex' => 'Lauka :attribute formāts nav derīgs.',
+    'required' => 'Lauks :attribute ir obligāts.',
+    'string' => 'Laukam :attribute jābūt tekstam.',
+    'unique' => 'Šāda :attribute vērtība jau tiek izmantota.',
+    'attributes' => [
+        'name' => 'vārds, uzvārds vai nosaukums', 'email' => 'e-pasta adrese', 'password' => 'parole', 'password_confirmation' => 'paroles apstiprinājums',
+        'role' => 'loma', 'admin_invite_code' => 'administratoru ielūguma kods', 'terms' => 'lietošanas noteikumi', 'phone' => 'tālrunis', 'birth_date' => 'dzimšanas datums',
+        'horse_id' => 'zirgs', 'title' => 'nosaukums', 'start_date' => 'sākuma datums', 'end_date' => 'beigu datums', 'task_time' => 'laiks', 'recurrence' => 'atkārtošanās grafiks',
+        'weekdays' => 'nedēļas dienas', 'month_ranges' => 'mēneša intervāli', 'inventory_item_id' => 'krājums', 'consumption' => 'patēriņš', 'amount' => 'deva',
+        'record_date' => 'ieraksta datums', 'next_date' => 'nākamās vizītes datums', 'training_date' => 'treniņa datums', 'training_time' => 'treniņa laiks',
+    ],
+];

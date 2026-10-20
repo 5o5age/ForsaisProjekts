@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "bmewburn.vscode-intelephense-client",
+    "onecentlin.laravel-blade",
+    "amiralizadeh9480.laravel-extra-intellisense",
+    "xdebug.php-debug"
+  ]
+}

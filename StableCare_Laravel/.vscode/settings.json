@@ -1,0 +1,6 @@
+{
+  "editor.formatOnSave": true,
+  "files.associations": { "*.blade.php": "blade" },
+  "[php]": { "editor.defaultFormatter": "bmewburn.vscode-intelephense-client" },
+  "[blade]": { "editor.defaultFormatter": "onecentlin.laravel-blade" }
+}
