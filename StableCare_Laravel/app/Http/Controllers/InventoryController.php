@@ -16,9 +16,25 @@ use Illuminate\Support\Facades\Schema;
 
 class InventoryController extends Controller
 {
-    public function index(InventoryForecastService $forecastService): View
+    public function index(Request $request, InventoryForecastService $forecastService): View
     {
-        $items = InventoryItem::where('stable_id', auth()->user()->stable_id)->withCount('movements')->when(request('q'), fn ($q, $needle) => $q->where('name', 'like', '%'.request('q').'%'))->when(request()->boolean('low'), fn ($q) => $q->whereColumn('quantity', '<=', 'minimum_quantity'))->orderByRaw('(quantity <= minimum_quantity) DESC')->orderBy('name')->paginate(15);
+        $search = trim((string) $request->query('q', ''));
+        $items = InventoryItem::query()
+            ->where('stable_id', auth()->user()->stable_id)
+            ->withCount('movements')
+            ->when($search !== '', function ($query) use ($search): void {
+                $term = '%' . $search . '%';
+                $query->where(function ($matches) use ($term): void {
+                    $matches->where('name', 'like', $term)
+                        ->orWhere('category', 'like', $term)
+                        ->orWhere('location', 'like', $term);
+                });
+            })
+            ->when($request->boolean('low'), fn ($query) => $query->whereColumn('quantity', '<=', 'minimum_quantity'))
+            ->orderByRaw('(quantity <= minimum_quantity) DESC')
+            ->orderBy('name')
+            ->paginate(15)
+            ->withQueryString();
         $lowCount = InventoryItem::where('stable_id', auth()->user()->stable_id)->whereColumn('quantity', '<=', 'minimum_quantity')->count();
         $today = CarbonImmutable::today();
         $forecastEnd = $today->addDays(365);

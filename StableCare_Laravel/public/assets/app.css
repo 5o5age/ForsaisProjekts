@@ -422,3 +422,175 @@
 
 /* Respect HTML visibility toggles used by conditional registration fields. */
 [hidden] { display: none !important; }
+
+:root[data-theme="dark"] .stable-invite {
+    background: linear-gradient(135deg, #22372a, #1b2a21);
+    border: 1px solid #405844;
+    box-shadow: inset 3px 0 #87ad8b;
+    color: #e3ece4;
+}
+:root[data-theme="dark"] .stable-invite .field-hint { color: #c1d0c3; }
+:root[data-theme="dark"] .stable-invite code {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #3b5140;
+    border-radius: 8px;
+    background: #142119;
+    color: #d8ead9;
+}
+
+.calendar-more-toggle {
+    align-self: flex-start;
+    padding: 5px 8px;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: #557c5b;
+    font: 700 10px/1.4 var(--sans);
+    text-align: left;
+    cursor: pointer;
+}
+.calendar-more-toggle:hover { background: #e8f0e7; }
+:root[data-theme="dark"] .calendar-more-toggle { color: #c1dcc3; }
+:root[data-theme="dark"] .calendar-more-toggle:hover { background: #304634; }
+
+.profile-layout > .profile-form-card:nth-child(2) {
+    overflow: hidden;
+    border-color: #d8e2d8;
+}
+.profile-layout > .profile-form-card:nth-child(2) .form-section {
+    padding: 28px;
+    background: radial-gradient(ellipse at 100% 0%, rgba(115, 157, 117, .12), transparent 58%), linear-gradient(145deg, #fffefa, #f7faf5);
+}
+.profile-layout > .profile-form-card:nth-child(2) .form-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-bottom: 9px;
+    font-size: 23px;
+}
+.profile-layout > .profile-form-card:nth-child(2) .form-section h2::before {
+    content: '✦';
+    display: grid;
+    width: 36px;
+    height: 36px;
+    flex: none;
+    place-items: center;
+    border: 1px solid #d9e6d7;
+    border-radius: 11px;
+    background: #edf4eb;
+    color: #4f7955;
+    font: 600 17px/1 var(--sans);
+}
+.profile-layout > .profile-form-card:nth-child(2) .form-section > p {
+    max-width: 390px;
+    margin: 0 0 22px 47px;
+    line-height: 1.65;
+}
+.profile-layout > .profile-form-card:nth-child(2) .form-stack { gap: 15px; }
+.profile-layout > .profile-form-card:nth-child(2) .form-actions {
+    margin-top: 4px;
+    padding: 16px 0 0;
+    border-top: 1px solid #e3e9e0;
+    background: transparent;
+}
+.profile-layout > .profile-form-card:nth-child(2) .form-actions > span { display: none; }
+.profile-layout > .profile-form-card:nth-child(2) .form-actions .btn { width: 100%; min-height: 46px; }
+:root[data-theme="dark"] .profile-layout > .profile-form-card:nth-child(2) {
+    border-color: #405545;
+}
+:root[data-theme="dark"] .profile-layout > .profile-form-card:nth-child(2) .form-section {
+    background: radial-gradient(ellipse at 100% 0%, rgba(116, 165, 121, .13), transparent 58%), linear-gradient(145deg, #1c2b21, #19261e);
+}
+:root[data-theme="dark"] .profile-layout > .profile-form-card:nth-child(2) .form-section h2::before {
+    border-color: #405744;
+    background: #263a2b;
+    color: #c0dfc0;
+}
+:root[data-theme="dark"] .profile-layout > .profile-form-card:nth-child(2) .form-actions {
+    border-color: #3a4a3d;
+}
+
+.filter-bar input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    min-height: 18px;
+    flex: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    box-shadow: none;
+    accent-color: var(--forest-2);
+}
+.filter-bar .checkbox-label {
+    min-height: 40px;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    background: var(--white);
+    color: var(--ink);
+}
+.filter-bar .checkbox-label span { max-width: 260px; }
+
+.pagination-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+.pagination-wrap .pagination-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    width: 100%;
+}
+.pagination-summary { color: var(--muted); font-size: 11px; }
+.pagination-summary strong { color: var(--ink); font-weight: 700; }
+.pagination-wrap .pagination-controls { display: flex; align-items: center; gap: 5px; }
+.pagination-wrap .pagination-controls a,
+.pagination-wrap .pagination-controls span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    min-height: 34px;
+    height: auto;
+    padding: 0 10px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    background: var(--white);
+    color: var(--ink);
+    font-size: 10px;
+    line-height: 1;
+    white-space: nowrap;
+    transition: background .15s, border-color .15s, color .15s;
+}
+.pagination-wrap .pagination-controls a:hover { border-color: #8cab96; background: #edf4eb; }
+.pagination-wrap .pagination-controls .pagination-number[aria-current="page"] {
+    border-color: var(--forest-2);
+    background: var(--forest-2);
+    color: #fff;
+    font-weight: 700;
+}
+.pagination-wrap .pagination-controls .pagination-step { padding: 0 12px; }
+.pagination-wrap .pagination-controls .is-disabled { opacity: .45; }
+.pagination-wrap .pagination-controls .pagination-ellipsis { min-width: 18px; padding: 0; border: 0; background: transparent; }
+:root[data-theme="dark"] .filter-bar .checkbox-label { border-color: #3a4c40; background: #1b2a21; color: #e8efe9; }
+:root[data-theme="dark"] .pagination-wrap .pagination-controls a,
+:root[data-theme="dark"] .pagination-wrap .pagination-controls span { border-color: #405345; background: #202e24; color: #d6e0d7; }
+:root[data-theme="dark"] .pagination-wrap .pagination-controls a:hover { border-color: #8fbe92; background: #304634; }
+:root[data-theme="dark"] .pagination-wrap .pagination-controls .pagination-number[aria-current="page"] { border-color: #3c704b; background: #3c704b; color: #fff; }
+:root[data-theme="dark"] .pagination-wrap .pagination-controls .pagination-ellipsis { border-color: transparent; background: transparent; }
+@media (max-width: 700px) {
+    .pagination-wrap .pagination-nav { align-items: stretch; flex-direction: column; gap: 12px; }
+    .pagination-summary { text-align: center; }
+    .pagination-wrap .pagination-controls { justify-content: center; flex-wrap: wrap; }
+    .pagination-wrap .pagination-controls .pagination-step { padding: 0 9px; }
+}

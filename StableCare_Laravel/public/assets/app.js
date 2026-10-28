@@ -69,6 +69,18 @@
         if (noteField) noteField.value = note.trim().slice(0, 500);
     }));
 
+    document.querySelectorAll('[data-calendar-more]').forEach((button) => {
+        const extras = button.closest('.day-events')?.querySelectorAll('[data-calendar-extra]') ?? [];
+        let expanded = false;
+
+        button.addEventListener('click', () => {
+            expanded = !expanded;
+            extras.forEach((event) => { event.hidden = !expanded; });
+            button.setAttribute('aria-expanded', String(expanded));
+            button.textContent = expanded ? 'Rādīt mazāk' : `+ ${button.dataset.moreCount} vēl`;
+        });
+    });
+
     // Mobile landing page navigation stays small and keyboard-accessible.
     const landingToggle = document.querySelector('.landing-menu');
     const landingNav = document.querySelector('.landing-nav');

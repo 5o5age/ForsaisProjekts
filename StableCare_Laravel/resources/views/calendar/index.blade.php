@@ -15,8 +15,8 @@
             <div class="calendar-day {{ $day['inMonth'] ? '' : 'outside-month' }} {{ $day['isToday'] ? 'is-today' : '' }}">
                 <div class="day-number"><span>{{ $day['date']->day }}</span>@if($day['isToday'])<small>ŠODIEN</small>@endif</div>
                 <div class="day-events">
-                    @foreach($day['tasks'] as $item)
-                        <div class="calendar-event {{ $item['done'] ? 'event-done' : '' }} {{ $item['task']->priority === 'urgent' ? 'event-urgent' : '' }}">
+                    @foreach($day['tasks'] as $eventIndex => $item)
+                        <div class="calendar-event {{ $item['done'] ? 'event-done' : '' }} {{ $item['task']->priority === 'urgent' ? 'event-urgent' : '' }}" @if($eventIndex >= 3) data-calendar-extra hidden @endif>
                             <div class="event-time">{{ $item['task']->task_time ? substr($item['task']->task_time, 0, 5) : '—' }}</div>
                             <div class="event-title">{{ $item['task']->title }}</div>
                             @if($item['task']->horse)<div class="event-horse">{{ $item['task']->horse->name }}</div>@endif
@@ -38,6 +38,9 @@
                             @endif
                         </div>
                     @endforeach
+                    @if($day['tasks']->count() > 3)
+                        <button class="calendar-more-toggle" type="button" data-calendar-more data-more-count="{{ $day['tasks']->count() - 3 }}" aria-expanded="false">+ {{ $day['tasks']->count() - 3 }} vēl</button>
+                    @endif
                 </div>
             </div>
         @endforeach
