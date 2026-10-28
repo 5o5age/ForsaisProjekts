@@ -419,3 +419,6 @@
 :root[data-theme="dark"] .feature-no,
 :root[data-theme="dark"] .role-number,
 :root[data-theme="dark"] .role-arrow { color: #c1d1c3; }
+
+/* Respect HTML visibility toggles used by conditional registration fields. */
+[hidden] { display: none !important; }
