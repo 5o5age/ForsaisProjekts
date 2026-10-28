@@ -76,4 +76,36 @@
         landingNav.classList.toggle('open');
         landingToggle.setAttribute('aria-expanded', String(landingNav.classList.contains('open')));
     });
+
+    const themeRoot = document.documentElement;
+    const themeKey = 'stablecare-theme';
+    let themeButton = document.querySelector('[data-theme-toggle]');
+    if (!themeButton) {
+        themeButton = document.createElement('button');
+        themeButton.type = 'button';
+        themeButton.className = 'theme-toggle';
+        themeButton.setAttribute('data-theme-toggle', '');
+        themeButton.innerHTML = '<span class="theme-toggle-icon" aria-hidden="true"></span><span class="theme-toggle-label"></span>';
+        const themeHost = document.querySelector('.topbar-right, .landing-header') || document.body;
+        themeHost.append(themeButton);
+    }
+
+    const updateThemeButton = () => {
+        const isDark = themeRoot.dataset.theme === 'dark';
+        const nextLabel = isDark ? 'Gaišais režīms' : 'Tumšais režīms';
+        themeButton.querySelector('.theme-toggle-icon').textContent = isDark ? '☀' : '☾';
+        themeButton.querySelector('.theme-toggle-label').textContent = nextLabel;
+        themeButton.setAttribute('aria-label', `Pārslēgt uz ${nextLabel.toLowerCase()}`);
+        themeButton.title = nextLabel;
+        const themeColor = document.querySelector('meta[name="theme-color"]');
+        if (themeColor) themeColor.content = isDark ? '#101814' : '#183e32';
+    };
+
+    themeButton.addEventListener('click', () => {
+        const nextTheme = themeRoot.dataset.theme === 'dark' ? 'light' : 'dark';
+        themeRoot.dataset.theme = nextTheme;
+        try { window.localStorage.setItem(themeKey, nextTheme); } catch (error) { /* Keep the current page usable when storage is blocked. */ }
+        updateThemeButton();
+    });
+    updateThemeButton();
 })();

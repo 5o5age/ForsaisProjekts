@@ -6,9 +6,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Panelis') · StableCare</title>
     <meta name="theme-color" content="#183e32">
-    <link rel="stylesheet" href="{{ asset('assets/app.css') }}">
-    <script defer src="{{ asset('assets/app.js') }}"></script>
-</head>
+    <link rel="stylesheet" href="{{ asset('assets/app.css') }}?v={{ filemtime(public_path('assets/app.css')) }}">
+    <script defer src="{{ asset('assets/app.js') }}?v={{ filemtime(public_path('assets/app.js')) }}"></script>
+<script>try{const t=localStorage.getItem("stablecare-theme"),m=window.matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.dataset.theme=t==="dark"||t==="light"?t:m?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script></head>
 <body>
 <div class="app-shell">
     <aside class="sidebar" id="sidebar">
@@ -52,7 +52,7 @@
         <header class="topbar">
             <button class="mobile-menu" type="button" aria-label="Atvērt izvēlni" aria-controls="sidebar" aria-expanded="false" data-menu-toggle>☰</button>
             <div class="breadcrumb"><span>StableCare</span><span class="crumb-sep">/</span><strong>@yield('title', 'Pārskats')</strong></div>
-            <div class="topbar-right"><span class="status-dot"></span><span class="topbar-status">Sistēma gatava</span><span class="topbar-date">{{ now()->translatedFormat('j. F Y') }}</span></div>
+            <div class="topbar-right"><span class="status-dot"></span><span class="topbar-status">Sistēma gatava</span><span class="topbar-date">{{ now()->translatedFormat('j. F Y') }}</span><button class="theme-toggle" type="button" data-theme-toggle aria-label="Pārslēgt uz tumšo režīmu"><span class="theme-toggle-icon" aria-hidden="true">☾</span><span class="theme-toggle-label">Tumšais režīms</span></button></div>
         </header>
         <main class="page-content">
             @if(session('success'))<div class="flash flash-success" role="status"><span>✓</span><div>{{ session('success') }}</div><button type="button" data-dismiss aria-label="Aizvērt">×</button></div>@endif
